@@ -85,6 +85,21 @@ rules = [
     0 0 0 1 1 2 1 1;  % Low Environmental Impact & Low Utility => Somewhat Legit
     0 3 0 0 3 4 1 1;  % High Transaction & High Utility => Highly Legit
     0 1 0 0 1 1 1 1;  % Low Transaction & Low Utility => Not Legit
+
+    % Low Market Cap with varied other factors
+    1 3 0 0 0 2 1 1; % Low Market Cap & High Developer Activity => Somewhat Legit
+    1 0 3 0 0 1 1 1; % Low Market Cap & High Transaction => Not Legit
+    1 0 0 1 3 2 1 1; % Low Market Cap & Low Environmental Impact & High Utility => Somewhat Legit
+    1 2 0 0 0 1 1 1; % Low Market Cap & Medium Developer Activity => Not Legit
+    1 0 2 0 0 1 1 1; % Low Market Cap & Medium Transaction => Not Legit
+
+    % Specific combinations indicating potential risks
+    0 1 1 3 0 1 1 1; % Low Transaction & Low Developer Activity & High Environmental Impact => Not Legit
+    0 2 2 0 1 2 1 1; % Medium Transaction & Medium Developer Activity & Low Utility => Somewhat Legit
+    0 3 1 0 0 3 1 1; % High Transaction & Low Developer Activity => Moderately Legit
+    0 0 2 2 0 2 1 1; % Medium Developer Activity & Medium Environmental Impact => Somewhat Legit
+    0 0 0 2 2 3 1 1; % Medium Environmental Impact & Medium Utility => Moderately Legit
+    0 0 1 0 3 2 1 1; % Low Developer Activity & High Utility => Somewhat Legit
 ];
 fis = addRule(fis, rules);
 
