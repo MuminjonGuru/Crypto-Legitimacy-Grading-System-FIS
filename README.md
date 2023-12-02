@@ -10,17 +10,20 @@ The current rules are based on the 5 input data I have. All the combinations for
 These are based on some of the ideas I've got from 
 - https://koinly.io/blog/crypto-rug-pulls-guide/
 
-***Still it needs rule refinement. [WORKING ON IT]***
-***Consideration of all combinations of the input. [WORKING ON IT]***
+- ***Still it needs rule refinement. [WORKING ON IT]***
+- ***Consideration of all combinations of the input. [WORKING ON IT]***
 
 Here is the current state of the grading system which does not include everything but somehow gives moderately legit grading :)
+
+After the next update on the rules, this is the new output
 
 CryptoName	LegitimacyGrade
  - Bitcoin    	        93.2821
  - Ethereum	    39.8979
- - Tether	            40
- - Binance Coin  24.6874
+ - Tether	            55
+ - Binance Coin  36.2861
+ - XRP					24.6874
 
-As you can see we have low grading for the ETH and that already shows the issue in the fuzzy inference system.
+As you can see we have low grading for the ETH and that already shows the issue in the fuzzy inference system. 
 My potential plan is to check rule effectiveness, analysis required for various input factors and overall model calibration.
 
