@@ -63,6 +63,12 @@ rules = [
     3 3 0 0 0 4 1 1;  % High Market Cap & High Developer Activity => Highly Legit
     3 0 0 3 0 4 1 1;  % High Market Cap & High Environmental Impact => Highly Legit
     3 0 0 0 3 4 1 1;  % High Market Cap & High Utility => Highly Legit
+
+    % High Market Cap with varied other factors
+    3 2 0 0 0 4 1 1; % High Market Cap & Medium Developer Activity => Highly Legit
+    3 0 0 2 0 4 1 1; % High Market Cap & Medium Environmental Impact => Highly Legit
+    3 0 0 0 2 4 1 1; % High Market Cap & Medium Utility => Highly Legit
+    3 1 0 0 0 3 1 1; % High Market Cap & Low Transaction => Moderately Legit
     
     % Medium market cap indicates moderate legitimacy
     2 0 0 0 0 3 1 1;  % Medium Market Cap => Moderately Legit
