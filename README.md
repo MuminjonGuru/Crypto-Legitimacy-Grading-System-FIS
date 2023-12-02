@@ -15,11 +15,11 @@ These are based on some of the ideas I've got from
 
 Here is the current state of the grading system which does not include everything but somehow gives moderately legit grading :)
 
-After the third update on the rules, this is the new output
+After the fourth update on the rules, this is the new output
 
 CryptoName   LegitimacyGrade
- - Bitcoin    	        84.5335
- - Ethereum	    39.8979
+ - Bitcoin    	        83.2776
+ - Ethereum	    43.2495
  - Tether	            55
  - Binance Coin  36.2861
  - XRP					24.6874
