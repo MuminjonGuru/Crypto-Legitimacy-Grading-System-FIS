@@ -106,6 +106,28 @@ rules = [
     0 0 2 2 0 2 1 1; % Medium Developer Activity & Medium Environmental Impact => Somewhat Legit
     0 0 0 2 2 3 1 1; % Medium Environmental Impact & Medium Utility => Moderately Legit
     0 0 1 0 3 2 1 1; % Low Developer Activity & High Utility => Somewhat Legit
+
+    % Additional calibration using various factors
+    % High Transaction, Developer Activity, OR High Utility indicates legitimacy
+    0 3 3 0 3 4 1 1; % High Transaction OR High Developer Activity OR High Utility => Highly Legit
+    0 2 2 0 2 3 1 1; % Medium Transaction OR Medium Developer Activity OR Medium Utility => Moderately Legit
+    
+    % High Market Cap with High/Medium Developer Activity and Utility
+    3 3 0 0 3 4 1 1; % High Market Cap AND High Developer Activity AND High Utility => Highly Legit
+    3 2 0 0 2 4 1 1; % High Market Cap AND Medium Developer Activity AND Medium Utility => Highly Legit
+    
+    % Medium Market Cap with balanced factors
+    2 2 2 0 2 3 1 1; % Medium Market Cap AND Medium Transaction AND Medium Developer Activity => Moderately Legit
+    
+    % Low Market Cap but high Developer Activity or Utility
+    1 3 0 0 3 3 1 1; % Low Market Cap BUT High Developer Activity OR High Utility => Moderately Legit
+    1 0 3 0 3 3 1 1; % Low Market Cap BUT High Transaction OR High Utility => Moderately Legit
+    
+    % Handling Stablecoins and Environmental Impact
+    0 0 0 3 1 2 1 1; % Medium Environmental Impact AND Low Utility => Somewhat Legit
+    0 0 0 1 3 1 1 1; % High Environmental Impact AND Low Utility => Not Legit
+    
+    
 ];
 fis = addRule(fis, rules);
 
