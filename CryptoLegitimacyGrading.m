@@ -18,33 +18,33 @@ fis = addmf(fis, 'input', 1, 'High', 'trapmf', [80 100 100 100]);  % higher mark
 % Add Transaction Data Input
 fis = addvar(fis, 'input', 'Transaction Data', [0 100]); % Range up to 100
 % membership functions for daily transactions
-fis = addmf(fis, 'input', 2, 'Low', 'trapmf', [0 0 10 30]); % Low transaction volume
-fis = addmf(fis, 'input', 2, 'Medium', 'trapmf', [20 40 60 80]); % Medium transaction volume
-fis = addmf(fis, 'input', 2, 'High', 'trapmf', [70 85 100 100]); % High transaction volume
+fis = addmf(fis, 'input', 2, 'Low', 'trapmf', [0 0 10 30]); 
+fis = addmf(fis, 'input', 2, 'Medium', 'trapmf', [20 40 60 80]); 
+fis = addmf(fis, 'input', 2, 'High', 'trapmf', [70 85 100 100]); 
 
 
 % Developer Activity Input
 fis = addvar(fis, 'input', 'Developer Activity', [0 100]);
 % Defining membership functions for Developer Activity
-fis = addmf(fis, 'input', 3, 'Low', 'trapmf', [0 0 20 40]);  % Low developer activity
-fis = addmf(fis, 'input', 3, 'Medium', 'trapmf', [30 50 70 90]);  % Moderate developer activity
-fis = addmf(fis, 'input', 3, 'High', 'trapmf', [80 100 100 100]);  % High developer activity
+fis = addmf(fis, 'input', 3, 'Low', 'trapmf', [0 0 20 40]);  
+fis = addmf(fis, 'input', 3, 'Medium', 'trapmf', [30 50 70 90]);
+fis = addmf(fis, 'input', 3, 'High', 'trapmf', [80 100 100 100]);
 
 
 % Environmental Impact Input
 fis = addvar(fis, 'input', 'Environmental Impact', [0 100]);
 % membership functions for Environmental Impact
-fis = addmf(fis, 'input', 4, 'Low', 'trapmf', [0 0 20 40]);  % Low environmental impact
-fis = addmf(fis, 'input', 4, 'Medium', 'trapmf', [30 50 70 90]);  % Moderate environmental impact
-fis = addmf(fis, 'input', 4, 'High', 'trapmf', [80 100 100 100]);  % High environmental impact
+fis = addmf(fis, 'input', 4, 'Low', 'trapmf', [0 0 20 40]);  
+fis = addmf(fis, 'input', 4, 'Medium', 'trapmf', [30 50 70 90]);
+fis = addmf(fis, 'input', 4, 'High', 'trapmf', [80 100 100 100]);
 
 
 % Complexity vs. Utility Input
 fis = addvar(fis, 'input', 'Complexity vs. Utility', [0 100]);
 % membership functions for Complexity vs. Utility
-fis = addmf(fis, 'input', 5, 'Low', 'trapmf', [0 0 20 40]);  % Low utility and high complexity
-fis = addmf(fis, 'input', 5, 'Medium', 'trapmf', [30 50 70 90]);  % Balanced complexity and utility
-fis = addmf(fis, 'input', 5, 'High', 'trapmf', [80 100 100 100]);  % High utility and manageable complexity
+fis = addmf(fis, 'input', 5, 'Low', 'trapmf', [0 0 20 40]);  
+fis = addmf(fis, 'input', 5, 'Medium', 'trapmf', [30 50 70 90]);
+fis = addmf(fis, 'input', 5, 'High', 'trapmf', [80 100 100 100]);
 
 
 % The output variable for Legitimacy Grading
@@ -107,7 +107,6 @@ rules = [
     0 0 0 2 2 3 1 1; % Medium Environmental Impact & Medium Utility => Moderately Legit
     0 0 1 0 3 2 1 1; % Low Developer Activity & High Utility => Somewhat Legit
 
-    % Additional calibration using various factors
     % High Transaction, Developer Activity, OR High Utility indicates legitimacy
     0 3 3 0 3 4 1 1; % High Transaction OR High Developer Activity OR High Utility => Highly Legit
     0 2 2 0 2 3 1 1; % Medium Transaction OR Medium Developer Activity OR Medium Utility => Moderately Legit
@@ -126,8 +125,20 @@ rules = [
     % Handling Stablecoins and Environmental Impact
     0 0 0 3 1 2 1 1; % Medium Environmental Impact AND Low Utility => Somewhat Legit
     0 0 0 1 3 1 1 1; % High Environmental Impact AND Low Utility => Not Legit
+
+    % If Developer Activity is High, but Transaction Volume is Medium, still consider Highly Legit
+    0 2 3 0 0 4 1 1; % Medium Transaction & High Developer Activity => Highly Legit
     
+    % High Developer Activity with any level of Market Cap or Utility indicates high legitimacy
+    0 0 3 0 3 4 1 1; % High Developer Activity & High Utility => Highly Legit
+    1 0 3 0 0 4 1 1; % Low Market Cap & High Developer Activity => Highly Legit
+    2 0 3 0 0 4 1 1; % Medium Market Cap & High Developer Activity => Highly Legit
+    3 0 3 0 0 4 1 1; % High Market Cap & High Developer Activity => Highly Legit
     
+    % Consider the balance between Environmental Impact and Utility for Ethereum
+    0 0 0 2 3 4 1 1; % Medium Environmental Impact & High Utility (like smart contracts) => Highly Legit
+
+        
 ];
 fis = addRule(fis, rules);
 
@@ -135,29 +146,29 @@ fis = addRule(fis, rules);
 
 % ======= Batch Processing on Gathered Crypto Coins ======== %
 
-% Import Data from Excel
+% import data from Excel
 filename = 'Findings_v1.xlsx';
-dataTable = readtable(filename, 'ReadVariableNames', false); % Indicate no variable names
+dataTable = readtable(filename, 'ReadVariableNames', false);
 
-% Normalize Market Capitalization Data (assuming it's in Column A)
+% Market Cap. values (Column A)
 maxMarketCap = max(dataTable.Var1); % Var1 is now Market Cap Data column
-normalizedMarketCap = 100 * (dataTable.Var1 / maxMarketCap); % Normalize to 0-100
+normalizedMarketCap = 100 * (dataTable.Var1 / maxMarketCap); % 0-100
 
 % Transaction Data is in billions and needs to be normalized to 0-100
 maxTransaction = max(dataTable.Var2); % Var2 is Transaction Data column
-normalizedTransaction = 100 * (dataTable.Var2 / maxTransaction); % Normalize to 0-100
+normalizedTransaction = 100 * (dataTable.Var2 / maxTransaction); % 0-100
 
-% Preallocate array for outputs
+% preallocation for the array
 numCoins = height(dataTable);
 legitimacyGrades = zeros(numCoins, 1);
 
 for i = 1:numCoins
     % Extract and scale input data for each coin
-    marketCap = normalizedMarketCap(i); % normalized market cap. goes here
-    transaction = normalizedTransaction(i); % normalized value goes here
-    developerActivity = dataTable.Var3(i); % Column C - dev activity value
+    marketCap = normalizedMarketCap(i);      % normalized market cap. 
+    transaction = normalizedTransaction(i);  % normalized transaction data.
+    developerActivity = dataTable.Var3(i);   % Column C - dev activity 
     environmentalImpact = dataTable.Var4(i); % Column D - env. impact
-    utility = dataTable.Var5(i);           % Column E utility level
+    utility = dataTable.Var5(i);             % Column E utility level
 
     % Prepare input array for FIS
     inputArray = [marketCap, transaction, developerActivity, environmentalImpact, utility];
@@ -166,12 +177,11 @@ for i = 1:numCoins
     legitimacyGrades(i) = evalfis(fis, inputArray);
 end
 
-% --- Output Results to Excel ---
-
 % Combine cryptocurrency names [column 6] and legitimacy grades [output]
-outputTable = table(dataTable.Var6, legitimacyGrades, 'VariableNames', {'CryptoName', 'LegitimacyGrade'});
+outputTable = table(dataTable.Var6, legitimacyGrades, 'VariableNames', ...
+                    {'CryptoName', 'LegitimacyGrade'});
 
-% Write to a new Excel file
+% write to a new Excel file
 outputFilename = 'LegitimacyGradesOutput.xlsx';
 writetable(outputTable, outputFilename);
 
