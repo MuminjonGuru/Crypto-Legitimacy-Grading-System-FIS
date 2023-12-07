@@ -138,9 +138,24 @@ rules = [
     % Consider the balance between Environmental Impact and Utility for Ethereum
     0 0 0 2 3 4 1 1; % Medium Environmental Impact & High Utility (like smart contracts) => Highly Legit
 
-        
+    % last update
+    1 1 0 0 0 2 1 1; % Low Market Cap & Low Transaction => Somewhat Legit
+    1 2 0 0 0 2 1 1; % Low Market Cap & Medium Transaction => Somewhat Legit
+    1 0 3 0 0 3 1 1; % Low Market Cap & High Developer Activity => Moderately Legit
+    2 0 3 0 0 3 1 1; % Medium Market Cap & High Developer Activity => Moderately Legit
+    0 0 0 3 2 3 1 1; % High Environmental Impact & Medium Utility => Moderately Legit
+    0 0 0 2 1 2 1 1; % Medium Environmental Impact & Low Utility => Somewhat Legit
+    0 2 0 0 0 3 1 1; % Medium Transaction Volume => Moderately Legit
+    0 1 0 0 0 2 1 1; % Low Transaction Volume => Somewhat Legit
+    1 0 0 0 3 3 1 1; % Low Market Cap & High Utility => Moderately Legit
+    2 0 0 0 3 3 1 1; % Medium Market Cap & High Utility => Moderately Legit
+    1 0 0 3 0 2 1 1; % Low Market Cap & High Environmental Impact => Somewhat Legit
+    2 0 0 3 0 3 1 1; % Medium Market Cap & High Environmental Impact => Moderately Legit
+    0 2 2 2 2 3 1 1; % Medium Transaction, Developer Activity, Environmental Impact, and Utility => Moderately Legit
+    0 3 0 0 0 3 1 1; % High Transaction & Low/Medium Market Cap => Moderately Legit
+    0 0 0 0 3 3 1 1; % Medium Market Cap & High Utility => Moderately Legit
 ];
-fis = addRule(fis, rules);
+fis = addRule(fis, rules);  
 
 
 
@@ -215,3 +230,22 @@ plotmf(fis, 'input', 5)
 % Plot for Legitimacy Grade
 subplot(6,1,6)
 plotmf(fis, 'output', 1)
+
+
+% =============== to plot the calculated grades ================= %
+% Extract names and grades from the table
+cryptoNames = outputTable.CryptoName;
+legitimacyGrades = outputTable.LegitimacyGrade;
+
+% Create a bar plot
+bar(legitimacyGrades)
+title('Cryptocurrency Legitimacy Grades')
+ylabel('Legitimacy Grade')
+
+% Customize the X-axis
+set(gca, 'xticklabel', cryptoNames)
+xtickangle(45) % Angle the labels for better readability
+
+% Add grid for easier reading
+grid on
+% =============== to plot the calculated grades ================= %
