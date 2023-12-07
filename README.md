@@ -15,14 +15,9 @@ These are based on some of the ideas I've got from
 
 Here is the current state of the grading system which does not include everything but somehow gives moderately legit grading :)
 
-After the fourth update on the rules, this is the new output
+After the last update on the rules, this is the new output
 
-CryptoName   LegitimacyGrade
- - Bitcoin    	        83.2776
- - Ethereum	    43.2495
- - Tether	            55
- - Binance Coin  36.2861
- - XRP					24.6874
+![enter image description here](https://github.com/MuminjonGuru/Crypto-Legitimacy-Grading-System-FIS/blob/main/grading_final.png)
 
 As you can see we have low grading for the ETH and that already shows the issue in the fuzzy inference system. 
 My potential plan is to check rule effectiveness, analysis required for various input factors and overall model calibration.
