@@ -19,5 +19,6 @@ After the last update on the rules, this is the new output
 As you can see we have low grading for the ETH and that already shows the issue in the fuzzy inference system. 
 My potential plan is to check rule effectiveness, analysis required for various input factors and overall model calibration.
 
-White Paper on the Fuzzy Inference System: ![DOWNLOAD PDF](https://github.com/MuminjonGuru/Crypto-Legitimacy-Grading-System-FIS/blob/main/FuzzyLogic_Muminjon_P2822156.pdf)
+White Paper on the Fuzzy Inference System: 
+![DOWNLOAD PDF](https://github.com/MuminjonGuru/Crypto-Legitimacy-Grading-System-FIS/blob/main/FuzzyLogic_Muminjon_P2822156.pdf)
 
