@@ -13,7 +13,7 @@ These are based on some of the ideas I've got from
 Here is the current state of the grading system which does not include everything but somehow gives moderately legit grading :)
 
 After the last update on the rules, this is the new output
-[enter image description here](https://github.com/MuminjonGuru/Crypto-Legitimacy-Grading-System-FIS/blob/main/grading_final.png)
+![enter image description here](https://github.com/MuminjonGuru/Crypto-Legitimacy-Grading-System-FIS/blob/main/grading_final.png)
 
 - Bitcoin (BTC) holds the highest legitimacy rating, signifying a robust position in terms of 
 market confidence and expected long-term viability.
