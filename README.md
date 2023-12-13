@@ -9,6 +9,7 @@ The current rules are based on the 5 input data I have. All the combinations for
 
 These are based on some of the ideas I've got from 
 - https://koinly.io/blog/crypto-rug-pulls-guide/
+- https://www.jstor.org/stable/j.ctv2867sp
 
 Here is the current state of the grading system which does not include everything but somehow gives moderately legit grading :)
 
