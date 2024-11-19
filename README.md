@@ -29,5 +29,3 @@ enhancement or reduced market trust in comparison to the top cryptocurrencies.
 legitimacy based on the parameters established by the FIS.
 
 White Paper on the Fuzzy Inference System: [DOWNLOAD PDF](https://github.com/MuminjonGuru/Crypto-Legitimacy-Grading-System-FIS/blob/main/FuzzyLogic_Muminjon_P2822156.pdf)
-
-*I got B-                                                                f#!k
